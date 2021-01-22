@@ -1,5 +1,3 @@
-import java.nio.charset.StandardCharsets;
-
 public class MyMain {
     // This method returns true/false if there 
     // was a boat the specified coordinates. This
@@ -14,7 +12,6 @@ public class MyMain {
             return false;
         }
     }
-
 
     // Places a boat onto the board
     // The top-left piece of the board is located at (row, col)
@@ -39,40 +36,23 @@ public class MyMain {
     // increasing length
     // You may assume that all Strings are lowercase 
     public static boolean inOrder(String[][] words) { 
-        boolean tf = true;
-
-        int[] lenWords = new int[words.length * words[0].length];
-        int[] letters = new int[words.length * words[0].length];
-
         int count = 0;
         for (int i = 0; i < words.length; i++){
-            for (int j = 0; j < words[0].length; j++){
-                lenWords[count] = words[i][j].length();
-                char lett = words[i][j].charAt(0);
-                int value = (int) lett;
-                letters[count] = value;
-                count++;
-            }
-        }
-        for (int i = 0; i < lenWords.length; i++){
-            for (int j = 0; j < lenWords.length; j++){
-                if (lenWords[i] > lenWords[j]){
-                    tf = false;
-                    //break;
+            for (int j = 0; j < words[0].length-1; j++){
+                String first = words[i][j];
+                String second = words[i][j+1];
+                if ((first.compareTo(second) < 0) && (first.length() < second.length())){
+                    count++;
                 }
             }
         }
-        for (int i = 0; i < letters.length; i++){
-            for (int j = 0; j < letters.length; j++){
-                if (letters[i] > letters[j]){
-                    tf = false;
-                    //break;
-                }
-            }
+        if (count == ((words[0].length - 1)*(words.length))){
+            return true;
         }
-        return tf;
+        else{
+            return false;
+        }
     }
-
     public static void main(String[] args) {
         // You can test your code here
     }
