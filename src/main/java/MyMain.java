@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class MyMain {
     // This method returns true/false if there 
     // was a boat the specified coordinates. This
@@ -54,6 +55,27 @@ public class MyMain {
         }
     }
     public static void main(String[] args) {
-        // You can test your code here
+        boolean[][] board = new boolean[6][7];
+        int row = 3;
+        int col = 2;
+
+        hit(board, row, col);
+        //
+
+        boolean[][] board2 = new boolean[5][8];
+        String direction = "down";
+        int boatLength = 2;
+        int row2 = 1;
+        int col2 = 2;
+
+        System.out.println(Arrays.toString(placeBoat(board2, direction, boatLength, row2, col2)));
+        //
+
+        String[][] words = new String[][]{
+            {"cat","dead"},
+            {"giraffe","igloooooo"},
+            {"mopingaround","zylaphoneeeeess"}
+        };
+        inOrder(words);
     }
 }
